@@ -24,7 +24,6 @@ public class Voiture {
     @Column(unique = true, nullable = false)
     private String immatriculation;
 
-    private String type;
     private Double prixParJour;
     private Boolean disponibilite;
     private String photoUrl;
@@ -33,4 +32,7 @@ public class Voiture {
 
     @OneToMany(mappedBy = "voiture", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
 }
